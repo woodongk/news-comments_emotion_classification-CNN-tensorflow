@@ -39,8 +39,7 @@
   
 
 ## Contact
-```
 - 김우정 [gks3284@ajou.ac.kr]
 - 한재호 [woghrnt2@ajou.ac.kr]
-```
+
 
