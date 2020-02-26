@@ -10,18 +10,18 @@
 
 ## 🐥 데이터 분석 과정
 
-##### 1. 데이터 전처리
+### 1. 데이터 전처리
 
 - 뉴스 데이터 크롤링
 - 뉴스의 댓글 데이터로 word2vec 모델 학습시키기
     - `01. Train word2vec model.ipynb`
 
-##### 2. 감정사전 적용 
+### 2. 감정사전 적용 
 - happy, sad, disgust, angry, surprised, fear 6가지 감정에 해당하는 감정 사전 데이터 불러오기 
     - 관련연구 ""
 - 일정 비율 이상의 단어 등장 -> 댓글 데이터에 감정 레이블 달기 
 
-##### 3. Train CNN Model   
+### 3. Train CNN Model   
 - 
   
 
