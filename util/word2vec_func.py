@@ -1,13 +1,14 @@
 import pandas as pd
 import numpy as np
-from konlpy.tag import Twitter
+from konlpy.tag import Okt
 
 def load_data(path):
     """
     :param path: 파일 주소
     :return: 뉴스 댓글 dataframe
     """
-    all_daum_txt = open(path, 'r')
+    # mac
+    all_daum_txt = open(path, 'r',encoding='cp949')
     i = 0
     news_id = []
     comment_id = []
@@ -33,14 +34,17 @@ def load_data(path):
     return daum_data
 
 
-def tokenizer_comment(comment):
-    """
+def tokenize_comment(comment):
+    """ 
+    ** 참고 - konlpy.Okt 패키지 사용 **
+    
     :param comment: 뉴스 댓글 문장 하나
     :return: 문장을 token단위로 쪼갠 후 리스트로 반환
+    
     """
-    twitter = Twitter()
+    okt = Okt()
     i = 0
-    malist = twitter.pos(comment)
+    malist = okt.pos(comment)
     r = []
 
     tag = ["Noun", "Adjective"]
@@ -50,16 +54,16 @@ def tokenizer_comment(comment):
         for word in malist:
             # 어미/조사/구두점/ㅋㅋ^^ㅎㅎ/음표살림/Alphabet/부사는 대상에서 제외
             if word[1] in tag:
-                if not word[0] in r:
-                    if not word[0] in stopwords:
-                        # 숫자, 특수문자 제거.
-                        r.append(word[0])
+                if not (word[0] in r) and not (word[0] in stopwords):
+                    # 숫자, 특수문자 제거.
+                    r.append(word[0])
         return r
 
     except Exception as e:
         print(e)
 
-def comment_count(token_data):
+
+def count_comment(token_data):
     unique_comment_tokenized = [list(i) for i in set(tuple(i) for i in token_data)]
     word_dic = {}
 
@@ -71,7 +75,7 @@ def comment_count(token_data):
             word_dic[word] += 1
 
     keys = sorted(word_dic.items(), key = lambda x: x[1], reverse = True)
-    for word, count in keys[:500]:
+    for word, count in keys[:50]:
         print("{0}({1}) ".format(word, count), end = "")
 
     # [] 없애주는 코드
