@@ -8,34 +8,21 @@
 - 인터넷 뉴스 댓글에 감정 사전을 적용하여 Ekman의 6가지 감정(‘기쁨’, ‘슬픔’, ‘혐오’, ’놀람’, ‘공포’, ‘분노’)으로 분류된 데이터셋 구축
 - 댓글 감정 데이터셋을 바탕으로 CNN 기반의 감정 분석 모델을 구축하여 약 74%의 정확도를 달성
 
-##  Data Analysis
+## 🐥 데이터 분석 과정
 
-### 1. 크롤링한 데이터 정리 
-  1. news_token_word2vec
-  다음 뉴스 댓글 데이터를 불러오기
-  댓글 tokenizer하기 (명사 추출)
-  최종 데이터 형태: news_id, comment_id, comment, token
-  gensim의 word2vec 활용 (size 200)
-  word2vec model 저장
+##### 1. 데이터 전처리
 
-### 2. 감정 사전 적용
- 2. emotion_data
-  happy, sad, disgust, angry, surprised, fear 감정 사전 불러오기
-  토큰화 된 데이터에서 6가지의 감정 비율이 어느정도 되는지 확인
-  일정 비율 이상으로 토큰화 데이터에 감정 레이블 달기
-  D:\\WorkSpace\\뉴스 데이터\\id_emotion661245_0403.pickle -> total data
-  
-### 3. CNN Model
-  3. word_index
-  embedding layer에 붙이기 위한 word_index 만드는 파트
-  D:\\WorkSpace\\뉴스 데이터\\word_index0327.pickle -> word_index file
-  4. modeling
-  각 감정마다 만개씩 추출
-  one-hot encoding으로 y값 설정
-  embedding_matrix 설정 -> (총 단어 수, 차원 수)
-  pad_sequence(20)으로 문장 길이 채움
-  embedding layer의 weights는 embedding_matrix로 설정
-  그 후 Conv layer 결합
+- 뉴스 데이터 크롤링
+- 뉴스의 댓글 데이터로 word2vec 모델 학습시키기
+    - `01. Train word2vec model.ipynb`
+
+##### 2. 감정사전 적용 
+- happy, sad, disgust, angry, surprised, fear 6가지 감정에 해당하는 감정 사전 데이터 불러오기 
+    - 관련연구 ""
+- 일정 비율 이상의 단어 등장 -> 댓글 데이터에 감정 레이블 달기 
+
+##### 3. Train CNN Model   
+- 
   
 
 ## Contact
