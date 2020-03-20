@@ -43,25 +43,24 @@ def tokenize_comment(comment):
     
     """
     okt = Okt()
-    i = 0
-    malist = okt.pos(comment)
+    malist = okt.pos(comment,stem=True)
     r = []
 
-    tag = ["Noun", "Adjective"]
-    stopwords = ["것", "이", "안", "더", "왜", "때", "좀", "뭐", "거", "저", "뿐", "머"]
-
+    # 불용어 추가
+    stopwords = ['하다', ',', '들', '이', '..', '.', '것', '다', '이다', '~', '그', '그녀', '저', '...', '"', '~~']
+    remove_tag = ['Determiner', 'Josa', 'Eomi', 'PreEomi', 'URL', 'Email', 'Hashtag', 'Alpha',
+                  'ScreenName', 'KoreanParticle', 'Foreign', 'Cashtag']
     try:
         for word in malist:
             # 어미/조사/구두점/ㅋㅋ^^ㅎㅎ/음표살림/Alphabet/부사는 대상에서 제외
-            if word[1] in tag:
-                if not (word[0] in r) and not (word[0] in stopwords):
-                    # 숫자, 특수문자 제거.
-                    r.append(word[0])
+            if not word[1] in remove_tag:
+                if not word[0] in r:
+                    if not word[0] in stopwords:
+                        # 숫자, 특수문자 제거.
+                        r.append(word[0])
         return r
-
     except Exception as e:
-        print(e)
-
+        print (e)
 
 def count_comment(token_data):
     unique_comment_tokenized = [list(i) for i in set(tuple(i) for i in token_data)]
