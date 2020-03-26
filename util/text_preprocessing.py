@@ -35,32 +35,30 @@ def load_data(path):
 
 
 def tokenize_comment(comment):
-    """ 
+    """
     ** 참고 - konlpy.Okt 패키지 사용 **
-    
+
     :param comment: 뉴스 댓글 문장 하나
     :return: 문장을 token단위로 쪼갠 후 리스트로 반환
-    
+
     """
     okt = Okt()
-    malist = okt.pos(comment,stem=True)
+    malist = okt.pos(comment, norm=True, stem=True)
     r = []
+
+    tag_list = ['Noun', "Verb", 'Adjective', "Adverb", "Determiner", "Exclamation", "Emotion"]
 
     # 불용어 추가
     stopwords = ['하다', ',', '들', '이', '..', '.', '것', '다', '이다', '~', '그', '그녀', '저', '...', '"', '~~']
-    remove_tag = ['Determiner', 'Josa', 'Eomi', 'PreEomi', 'URL', 'Email', 'Hashtag', 'Alpha',
-                  'ScreenName', 'KoreanParticle', 'Foreign', 'Cashtag']
+
     try:
-        for word in malist:
-            # 어미/조사/구두점/ㅋㅋ^^ㅎㅎ/음표살림/Alphabet/부사는 대상에서 제외
-            if not word[1] in remove_tag:
-                if not word[0] in r:
-                    if not word[0] in stopwords:
-                        # 숫자, 특수문자 제거.
-                        r.append(word[0])
+        for word, tag in malist:
+            if tag in tag_list:
+                if not word in stopwords:
+                    r.append(word)
         return r
     except Exception as e:
-        print (e)
+        print(e)
 
 def count_comment(token_data):
     unique_comment_tokenized = [list(i) for i in set(tuple(i) for i in token_data)]
