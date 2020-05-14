@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from konlpy.tag import Okt
+from konlpy.tag import Mecab
 
 def load_data(path):
     """
@@ -34,7 +35,7 @@ def load_data(path):
     return daum_data
 
 
-def tokenize_comment(comment):
+def tokenize_okt(comment):
     """
     ** 참고 - konlpy.Okt 패키지 사용 **
 
@@ -59,6 +60,12 @@ def tokenize_comment(comment):
         return r
     except Exception as e:
         print(e)
+
+def tokenize_mecab(sentence):
+    mecab = Mecab()
+    result = [x for x in mecab.nouns(sentence) if len(x)>1]
+    return result
+
 
 def count_comment(token_data):
     unique_comment_tokenized = [list(i) for i in set(tuple(i) for i in token_data)]
