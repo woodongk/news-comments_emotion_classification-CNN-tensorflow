@@ -34,6 +34,37 @@ def load_data(path):
     daum_data.columns = ["news_id", "comment_id", "comment"]
     return daum_data
 
+def load_news_data(path):
+    """
+    :param path: 파일 주소
+    :return: 뉴스 dataframe
+    """
+    # mac
+    all_daum_txt = open(path, 'r',encoding='cp949')
+    i = 0
+    news_id = []
+    news_title = []
+    news_content = []
+
+    while True:
+        line = all_daum_txt.readline()
+        if not line: break
+        n_id = line.split("|$|")[0]  # news_id
+        news_id.append(n_id)
+        n_title = line.split("|$|")[1]  # news_title
+        news_title.append(n_title)
+        n_content = line.split("|$|")[2]  # news_contents
+        news_content.append(n_content)
+        i += 1
+
+    print(i)
+    print("@@@@@@")
+
+    daum_news_df = pd.DataFrame([news_id, news_title, news_content])
+    daum_news_df = daum_news_df.T
+    daum_news_df.columns = ["news_id", "title", "content"]
+    return daum_news_df
+
 
 def tokenize_okt(comment):
     """
