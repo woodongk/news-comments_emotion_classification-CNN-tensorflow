@@ -123,3 +123,23 @@ def count_comment(token_data):
     print("")
 
     return keys, n_vocab
+
+# 말뭉치 단어 별로 아이디로 변환해주는 함수
+def preprocess(text):
+    # 간단한 전처리
+    text = text.lower()
+    text = text.replace('.', ' .')
+    words = text.split(' ')
+
+    # 단어를 Id로
+    word_to_id = {}
+    id_to_word = {}
+    for word in words:
+        if word not in word_to_id:
+            new_id = len(word_to_id)
+            word_to_id[word] = new_id
+            id_to_word[new_id] = word
+
+    corpus = np.array([word_to_id[w] for w in words])
+
+    return corpus, word_to_id, id_to_word
