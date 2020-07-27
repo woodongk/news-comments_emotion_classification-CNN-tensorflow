@@ -1,69 +1,6 @@
-import pandas as pd
 import numpy as np
 from konlpy.tag import Okt
 from konlpy.tag import Mecab
-
-def load_data(path):
-    """
-    :param path: 파일 주소
-    :return: 뉴스 댓글 dataframe
-    """
-    # mac
-    all_daum_txt = open(path, 'r',encoding='cp949')
-    i = 0
-    news_id = []
-    comment_id = []
-    comments = []
-
-    while True:
-        line = all_daum_txt.readline()
-        if not line: break
-        n_id = line.split("|$|")[0]  # news_id
-        news_id.append(n_id)
-        c_id = line.split("|$|")[1]  # comment_id
-        comment_id.append(c_id)
-        temp = line.split("|$|")[4]  # comment
-        comments.append(temp)
-        i += 1
-
-    print(i)
-    print("@@@@@@")
-
-    daum_data = pd.DataFrame([news_id, comment_id, comments])
-    daum_data = daum_data.T
-    daum_data.columns = ["news_id", "comment_id", "comment"]
-    return daum_data
-
-def load_news_data(path):
-    """
-    :param path: 파일 주소
-    :return: 뉴스 dataframe
-    """
-    # mac
-    all_daum_txt = open(path, 'r',encoding='cp949')
-    i = 0
-    news_id = []
-    news_title = []
-    news_content = []
-
-    while True:
-        line = all_daum_txt.readline()
-        if not line: break
-        n_id = line.split("|$|")[0]  # news_id
-        news_id.append(n_id)
-        n_title = line.split("|$|")[1]  # news_title
-        news_title.append(n_title)
-        n_content = line.split("|$|")[2]  # news_contents
-        news_content.append(n_content)
-        i += 1
-
-    print(i)
-    print("@@@@@@")
-
-    daum_news_df = pd.DataFrame([news_id, news_title, news_content])
-    daum_news_df = daum_news_df.T
-    daum_news_df.columns = ["news_id", "title", "content"]
-    return daum_news_df
 
 
 def tokenize_okt(comment):
@@ -124,8 +61,14 @@ def count_comment(token_data):
 
     return keys, n_vocab
 
-# 말뭉치 단어 별로 아이디로 변환해주는 함수
+
+
 def preprocess(text):
+    '''
+    말뭉치 단어 별로 아이디로 변환해주는 함수
+    :param text:
+    :return:
+    '''
     # 간단한 전처리
     text = text.lower()
     text = text.replace('.', ' .')
