@@ -1,8 +1,3 @@
-## Requirement
-- Tensorflow 2.2.0
-- Keras 2.4.3
-- Gensim 3.8.1
-- Konlpy 0.5.2
 
 ## 다음(Daum) 뉴스 댓글 감정 분석 프로젝트
 
@@ -11,6 +6,13 @@
 	- 한재호, 김우정, 한경식. (2018). 인터넷 뉴스 댓글 기반의 다중 감정 분석 모델 개발 및 적용. 한국HCI학회 학술대회, (), 893-897.
 - 2018년 한국차세대컴퓨팅학회 최우수 논문 선정
 
+## Requirement
+- Tensorflow 2.2.0
+- Keras 2.4.3
+- Gensim 3.8.1
+- Konlpy 0.5.2
+
+---
 
 ### 1. 데이터 수집 및 전처리
 - 뉴스 데이터 크롤링 (코드 없음)
@@ -67,6 +69,9 @@
     - [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/02.%20Labeling%20Emotions%20on%20Comments.ipynb)
 
 ### 3. Text-CNN 모델 구축
+
+김윤 박사님의 논문과 여러 레퍼런스를 참고하여 구현하였다.
+
 ![cnn_architecture](자료/textCNN model architecture.png)
 
 - 2D CNN Parameter
@@ -77,11 +82,14 @@
 	- filter_sizes: [3, 4, 5]
 	- num_filters: 100
 
-- Result
+#### 학습 곡선 
 [결과 이미지 첨부]
 
 ### Reference
 - [Kim, Y. (2014). Convolutional neural networks for sentence classification.](https://arxiv.org/abs/1408.5882)
+- [CNN in keras with pretrained word2vec weights | Kaggle](https://www.kaggle.com/marijakekic/cnn-in-keras-with-pretrained-word2vec-weights)
+- [Using pre-trained word embeddings in a Keras model](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)
+- [Implementing a CNN for Text Classification in TensorFlow – WildML](http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/)
 
 ### Contact
 - 김우정 [gks3284@ajou.ac.kr]
