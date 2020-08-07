@@ -86,8 +86,7 @@
 #### 학습 곡선 
 ![](imgs/savefig_500dpi.png)
 
-- 학습 결과를 보면 높은 accuracy로 시작한다. 6가지 분류 문제임을 고려하였을 때, 한번의 학습에도 높은 정답율을 보여준다.
-- 본 모델의 학습데이터를 만들 때 감정 단어를 이용하였고, pretrained model로 word2vec 모델을 사용했다. 사전에 word2vec 모델에 단어 임베딩이 잘 형성되었기에 단어에 종속되는 학습 데이터 특성 상 높은 수치가 나왔다고 생각된다.
+- 학습 결과를 보면 6가지 분류 문제임임에도 한번의 학습에도 높은 val_accuracy를 보여준다. 본 모델의 학습데이터를 만들 때 감정 단어를 이용하였고, pretrained model로 word2vec 모델을 사용했다. 사전에 word2vec 모델에 단어 임베딩이 잘 형성되었기에 단어에 종속되는 학습 데이터 특성 상 높은 수치가 나왔다고 생각된다.
 
 ### Reference
 - [Kim, Y. (2014). Convolutional neural networks for sentence classification.](https://arxiv.org/abs/1408.5882)
