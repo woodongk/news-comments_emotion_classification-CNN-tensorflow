@@ -1,3 +1,9 @@
+## Requirement
+- Tensorflow 2.2.0
+- Keras 2.4.3
+- Gensim 3.8.1
+- Konlpy 0.5.2
+
 ## 다음(Daum) 뉴스 댓글 감정 분석 프로젝트
 
 - 다음(Daum) 뉴스 포탈에서 수집한 댓글 데이터 2,393,070개에 대한 6가지 감정 분석
