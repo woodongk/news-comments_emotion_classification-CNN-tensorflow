@@ -61,9 +61,21 @@
     - [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/02.%20Labeling%20Emotions%20on%20Comments.ipynb)
 
 ### 3. Text-CNN 모델 구축
-- 
-  
+![cnn_architecture](자료/textCNN model architecture.png)
 
+- 2D CNN Parameter
+	- sequence_legnth: 20
+	- num_classes: 6, [happy, sad, disgust, angry, surprised, fear]
+	- vocab_size: 168,620
+	- embedding_size: 300
+	- filter_sizes: [3, 4, 5]
+	- num_filters: 100
+
+- Result
+[결과 이미지 첨부]
+
+### Reference
+- [Kim, Y. (2014). Convolutional neural networks for sentence classification.](https://arxiv.org/abs/1408.5882)
 
 ### Contact
 - 김우정 [gks3284@ajou.ac.kr]
