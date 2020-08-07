@@ -83,9 +83,8 @@
 ````
 - [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/03.%20Train%20CNN%20model.ipynb)
 
-
 #### 학습 곡선 
-[결과 이미지 첨부]
+![](imgs/savefig_500dpi.png)
 
 ### Reference
 - [Kim, Y. (2014). Convolutional neural networks for sentence classification.](https://arxiv.org/abs/1408.5882)
