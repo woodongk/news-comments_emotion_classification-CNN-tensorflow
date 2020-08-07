@@ -7,10 +7,10 @@
 - 2018년 한국차세대컴퓨팅학회 최우수 논문 선정
 
 ## Requirement
-- Tensorflow 2.2.0
-- Keras 2.4.3
-- Gensim 3.8.1
-- Konlpy 0.5.2
+- tensorflow 2.2.0
+- keras 2.4.3
+- gensim 3.8.1
+- konlpy 0.5.2
 
 ---
 
