@@ -72,15 +72,17 @@
 
 김윤 박사님의 논문과 여러 레퍼런스를 참고하여 구현하였다.
 
-![cnn_architecture](자료/textCNN model architecture.png)
+![cnn_architecture](자료/textCNN.png)
 
-- 2D CNN Parameter
-	- sequence_legnth: 20
-	- num_classes: 6, [happy, sad, disgust, angry, surprised, fear]
-	- vocab_size: 168,620
-	- embedding_size: 300
-	- filter_sizes: [3, 4, 5]
-	- num_filters: 100
+### 2D CNN Parameter
+```bash
+- sequence_legnth: 20
+- num_classes: 6, [happy, sad, disgust, angry, surprised, fear]
+- vocab_size: 168,620
+- embedding_size: 300
+- filter_sizes: [3, 4, 5]
+- num_filters: 100
+````
 
 #### 학습 곡선 
 [결과 이미지 첨부]
