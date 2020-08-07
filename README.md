@@ -72,7 +72,8 @@
 
 김윤 박사님의 논문과 여러 레퍼런스를 참고하여 구현하였다.
 
-![cnn_architecture](자료/textCNN model architecture.png)
+![](imgs/textCNN.png)
+![](img/Overview.png)
 
 - 2D CNN Parameter
 	- sequence_legnth: 20
