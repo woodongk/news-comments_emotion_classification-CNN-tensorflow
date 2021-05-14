@@ -65,7 +65,7 @@
     - [[Code]](https://github.com/woodongk/news-comments_emotion_classification-CNN-tensorflow/blob/a4fefc88b3f4c28ca9719c46344fb9ca2fead8c1/02.%20Labeling%20Emotions%20on%20Comments.ipynb)
 
 ### 3. Text-CNN 모델 구축
-모델 학습에는 word2vec pretrained model만을 사용하였다. 김윤 박사님의 논문과 여러 레퍼런스를 참고하여 구현하였다.
+- 김윤 교수님의 논문을 참고하여 구현
 
 ![](자료/textCNN.png)
 
@@ -82,8 +82,9 @@
 
 #### 학습 곡선 
 ![](자료/savefig_500dpi.png)
+- epoch 50
+- 특정 시점 이후로 val_acc 는 일정하고 val_loss 만 떨어지고 있으므로 early stopping 걸어 오버핏 방지  
 
-- 학습 결과를 보면 6가지 분류 문제임에도 한번의 학습에 높은 val_accuracy를 보여준다. 본 모델의 학습데이터를 만들 때 감정 단어를 이용하였고, pretrained model로 word2vec 모델을 사용했다. 사전에 word2vec 모델에 단어 임베딩이 잘 형성되었기에 단어에 종속되는 학습 데이터 특성 상 높은 수치가 나왔다고 생각된다.
 
 ### Reference
 - [Kim, Y. (2014). Convolutional neural networks for sentence classification.](https://arxiv.org/abs/1408.5882)
