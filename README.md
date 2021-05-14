@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1dZhopgX3cHVy7T7aBgtIvY1wtCcSSxA5?usp=sharing)
 
 
 ## 뉴스 댓글 감정 분류 모델
