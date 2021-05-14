@@ -6,8 +6,8 @@
 - 2018년 한국차세대컴퓨팅학회 최우수 논문 선정
 
 ## Requirement
-- tensorflow 2.2.0
-- keras 2.4.3
+- tensorflow 2.4.1
+- keras 2.4.0
 - gensim 3.8.1
 - konlpy 0.5.2
 ---
@@ -17,10 +17,8 @@
 - 뉴스의 댓글 데이터로 word embedding model 만들기 
 	- 댓글 토큰화 and 특정 품사만 추출 
 	- konlpy Twitter (Okt) 패키지 기준 ['Noun', "Verb", 'Adjective', "Adverb", "Determiner", "Exclamation", "Emotion"]
-		- word2vec
-		- fastText 
-	- 자모 단위 토큰으로 학습된 fastText용
-- [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/01.%20Word%20Embedding.ipynb)
+- 동일한 데이터로 word2vec 학습
+- [[Code]](https://github.com/woodongk/news-comments_emotion_classification-CNN-tensorflow/blob/a4fefc88b3f4c28ca9719c46344fb9ca2fead8c1/01.%20Word%20Embedding.ipynb)
 
 ### 2. 댓글에 감정 레이블 부여하기 
 
@@ -31,7 +29,7 @@
     2.	[기쁨, 슬픔, 놀람, 공포, 혐오, 분노] 6가지 감정에 대한 기준 틀을 위 페이지에 만들어 놓았고, 저 기준 틀을 바탕으로 댓글을 6가지 감정으로 labeling 한다.
     3.	One label로 annotation 한다. (한 댓글에서 다수의 감정 느껴져도 한 가지 감정으로 annotate)
     4.	최대한 6가지 감정으로 분류한다. (기쁨이나 혐오로 label 몰리지 않게)
-    5.	그러나 감정 label annotation을 하다 보면 6가지의 감정으로 뚜렷하게 분류할 수 없는 경우가 존재한다.
+    5.	그러나 감정 label annotation 을 하다 보면 6가지의 감정으로 뚜렷하게 분류할 수 없는 경우가 존재한다.
     
         - 다수의 감정이 느껴질 경우/ 특정한 한 가지 감정으로 분류하기 힘든 경우
           	- 분노와 혐오가 언어적 특성에서 많이 겹치기 때문에, labeling을 하다 보면 명확하게 두 감정이 구분이 되지 않는 경우가 다수 존재. 따라서 분노와 혐오의 구분을 명확히 하기 위해 댓글에서 {욕, 과격한 단어, 공격적인 단어, 비속어}가 나타날 시에는 분노 그 외에는 혐오로 labeling한다.
@@ -62,25 +60,25 @@
 
 - 감정사전
     - 참고문헌 : 홍종선, 정연주. (2009). 감정동사의 범주 규정과 유형 분류. 한국어학, 45(), 387-420.
-    - 감정동사를 Ekman의 6가지 감정(‘기쁨’, ‘슬픔’, ‘혐오’, ’놀람’, ‘공포’, ‘분노’) 으로 분류하여 감성사전 구축
+    - 감정동사를 Ekman 의 6가지 감정(‘기쁨’, ‘슬픔’, ‘혐오’, ’놀람’, ‘공포’, ‘분노’) 으로 분류하여 감성사전 구축
     6 emotion : happy, sad, disgust, angry, surprised, fear
-    - [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/02.%20Labeling%20Emotions%20on%20Comments.ipynb)
+    - [[Code]](https://github.com/woodongk/news-comments_emotion_classification-CNN-tensorflow/blob/a4fefc88b3f4c28ca9719c46344fb9ca2fead8c1/02.%20Labeling%20Emotions%20on%20Comments.ipynb)
 
 ### 3. Text-CNN 모델 구축
 모델 학습에는 word2vec pretrained model만을 사용하였다. 김윤 박사님의 논문과 여러 레퍼런스를 참고하여 구현하였다.
 
 ![](자료/textCNN.png)
 
-### 2D CNN Parameter
+### Text-CNN Parameter
 ```bash
-- sequence_legnth: 20
+- max_sequence_legnth: 20
 - num_classes: 6, [happy, sad, disgust, angry, surprised, fear]
-- vocab_size: 168,620
-- embedding_size: 300
+- vocab_size: 30000
+- embedding_size: 300 (= dimension of word2vec) 
 - filter_sizes: [3, 4, 5]
 - num_filters: 100
 ````
-- [[Code]](https://github.com/woodongk/Daum-News-Comments_Sentiment_Analysis/blob/master/03.%20Train%20CNN%20model.ipynb)
+- [[Code]](https://github.com/woodongk/news-comments_emotion_classification-CNN-tensorflow/blob/32666580bd83291de4a0222c0b9d76cb237b2725/03.%20Train%20CNN%20model.ipynb)
 
 #### 학습 곡선 
 ![](자료/savefig_500dpi.png)
